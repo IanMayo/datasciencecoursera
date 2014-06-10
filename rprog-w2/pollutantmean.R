@@ -11,4 +11,17 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
   
     ## Return the mean of the pollutant across all monitors list
     ## in the 'id' vector (ignoring NA values)
+    
+    ## loop through the id numbers
+    for(i in 1:2)
+    {
+        # sort out the file name
+        fName <- paste(sprintf("%03d", i),".csv", sep="")
+        
+        # and the path
+        fPath <- paste(directory,"/",fName,sep="")
+        
+        # open the relevant file
+        thisD <- read.csv(fPath)
+    }  
 }
