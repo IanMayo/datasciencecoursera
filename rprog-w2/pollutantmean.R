@@ -13,23 +13,29 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
     ## in the 'id' vector (ignoring NA values)
     
     ## declare the placeholder for the new means
+    fullList <- c()
     
     ## loop through the id numbers
-  ##  for(i in 1:2)
-##    {
+    for(i in id)
+    {
         ## sort out the file name
-        fName <- paste(sprintf("%03d", 1),".csv", sep="")
+        fName <- paste(sprintf("%03d", i),".csv", sep="")
         
         ## and the path
         fPath <- paste(directory,"/",fName,sep="")
         
         ## open the relevant file
-        ## thisD <- read.csv(fPath)
+        thisD <- read.csv(fPath)
         
         ## get the relevant pollutant
-        ## thisP <- thisD[pollutant]
+        thisP <- thisD[pollutant]
         
+        res <- thisP[!is.na(thisP)]
+
         ## get the mean of this pollutant
-        ## thisM <- colmeans(thisP, na.rm = TRUE)
-  ##  }  
+        fullList <- c(fullList, res)     
+    }  
+    
+    ## calculate the overall mean
+    mean <- mean(fullList)
 }
