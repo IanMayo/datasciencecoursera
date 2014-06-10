@@ -30,12 +30,13 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
         ## get the relevant pollutant
         thisP <- thisD[pollutant]
         
-        res <- thisP[!is.na(thisP)]
+        ## trim the list
+        trimmed <- thisP[!is.na(thisP)]
 
         ## get the mean of this pollutant
-        fullList <- c(fullList, res)     
+        fullList <- c(fullList, trimmed)     
     }  
     
     ## calculate the overall mean
-    mean <- mean(fullList)
+    res <- mean(fullList)
 }
