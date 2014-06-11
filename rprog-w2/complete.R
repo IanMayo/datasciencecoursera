@@ -29,10 +29,13 @@ complete <- function(directory, id = 1:332) {
         thisD <- read.csv(fPath)
         
         ## get the list of complete cases        
-        valid <- thisD[thisD,]
+        valid <- complete.cases(thisD)
+        
+        ## and trim them
+        thisD <- thisD[valid,]
     }  
     
     ## return the result
-    valid
+    thisD
     
 }
