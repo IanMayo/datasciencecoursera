@@ -8,4 +8,49 @@ corr <- function(directory, threshold = 0) {
     ## nitrate and sulfate; the default is 0
     
     ## Return a numeric vector of correlations
+    
+    ## declare the placeholder for the new means
+    resList <- NULL
+    
+    ## loop through the id numbers
+    for(i in 1:332)
+    {
+        ## sort out the file name
+        fName <- paste(sprintf("%03d", i),".csv", sep="")
+        
+        ## and the path
+        fPath <- paste(directory,"/",fName,sep="")
+        
+        ## open the relevant file
+        thisD <- data.frame(read.csv(fPath))
+        
+        ## find the complete cases
+        complete <- complete.cases(thisD)
+        
+        ## trim to the complete cases
+        thisD <- thisD[complete,]
+        
+        ## do we have enough?
+        if(length(thisD[,1]) > threshold)
+        {
+            ## get the sulfates
+            sulfates <- thisD[,2]
+            nitrates <- thisD[,3]
+            
+            corr <- cor(sulfates, nitrates)
+            
+            resList <- c(resList, corr)
+        }
+    }  
+    ## collate the answer
+    
+    ## check the results value
+    if(length(resList) > 0)
+    {
+        return (resList)        
+    }
+    else
+    {
+        return (vector(mode="numeric", length=0))
+    }
 }
