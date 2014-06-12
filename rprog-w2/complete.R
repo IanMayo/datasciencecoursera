@@ -12,12 +12,13 @@ complete <- function(directory, id = 1:332) {
     ## ...
     ## where 'id' is the monitor ID number and 'nobs' is the
     ## number of complete cases
-    
+     
     ## declare the placeholder for the new means
-    fullList <- c()
+    idList <- NULL
+    nobsList <- NULL
     
     ## loop through the id numbers
-    for(i in 1)
+    for(i in id)
     {
         ## sort out the file name
         fName <- paste(sprintf("%03d", i),".csv", sep="")
@@ -33,9 +34,16 @@ complete <- function(directory, id = 1:332) {
         
         ## and trim them
         thisD <- thisD[valid,]
+        
+        ## how many are there
+        numValid = length(thisD[,1])
+
+        ## create the row for this one
+        idList <- c(idList, i);
+        nobsList <- c(nobsList, numValid)
+        
     }  
-    
-    ## return the result
-    thisD
-    
+    ## collate the answer
+    res <- data.frame(list(id=idList, nobs=nobsList))
+    return (res)
 }
