@@ -23,13 +23,6 @@ p <- ggplot(emissions, aes(x=factor(year), y=Emissions)) +
     ylab("Total PM2.5 emissions") +
     ggtitle("Coal Combustion-Related Emissions")
 
-#p <- ggplot(bDataAgg, aes(x = factor(year), y = Emissions, fill = type)) +
-#    geom_bar(stat="identity") +
-#    facet_grid(. ~ type) +
-#    xlab("year") +
-#    ylab("Total Annual PM2.5 emissions") +
-#    ggtitle("PM2.5 emissions for Baltimore")
-
 ## 6. Output the plot
 print(p)
 dev.off()
