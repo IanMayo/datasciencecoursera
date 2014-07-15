@@ -20,7 +20,7 @@ png("plot4.png", height=480, width=600)
 p <- ggplot(emissions, aes(x=factor(year), y=Emissions)) +
     geom_bar(stat="identity") +
     xlab("Year") +
-    ylab("Total PM2.5 emissions") +
+    ylab("Annual PM2.5 emissions (Tons)") +
     ggtitle("Coal Combustion-Related Emissions")
 
 ## 6. Output the plot
