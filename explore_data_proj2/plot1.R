@@ -9,8 +9,8 @@ png('plot1.png')
 
 ## 4. Produce the plot
 barplot(height=data$Emissions, names.arg=data$year,
-        xlab="years", ylab='total in-year PM2 emissions',
-        main='Total PM2 emissions at various years')
+        xlab="years", ylab='Annual PM2.5 emissions',
+        main='Total PM2.5 emissions')
 
 ## 5. Output the plot
 dev.off()
