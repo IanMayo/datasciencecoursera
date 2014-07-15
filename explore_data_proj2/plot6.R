@@ -24,7 +24,7 @@ png("plot6.png", height=480, width=600)
 ## 5. Produce the plot
 p <- ggplot(bothSets, aes(x=factor(year), y=Emissions, fill=County)) +
     geom_bar(stat="identity") + 
-    facet_grid(County  ~ ., scales="free") +
+    facet_grid(County ~ ., scales="free") +
     ylab("Annual emissions (Tons)") + 
     xlab("Year") +
     ggtitle("Comparison in Vehicle Emissions across Baltimore and Los Angeles")
