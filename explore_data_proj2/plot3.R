@@ -19,7 +19,7 @@ png("plot3.png", height=480, width=1024)
 p <- ggplot(bDataAgg, aes(x = factor(year), y = Emissions, fill = type)) +
     geom_bar(stat="identity") +
     facet_grid(. ~ type) +
-    xlab("year") +
+    xlab("Year") +
     ylab("Total Annual PM2.5 emissions") +
     ggtitle("PM2.5 emissions for Baltimore")
 
